@@ -17,7 +17,7 @@ const createFreeCamera = (
   camera.keysRight.push("d".charCodeAt(0));
   camera.keysRight.push("D".charCodeAt(0));
 
-  camera.position.y = 5;
+  camera.position.y = 50;
   camera.speed = 5;
   camera.checkCollisions = true;
   camera.applyGravity = false;

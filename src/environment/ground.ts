@@ -26,12 +26,12 @@ const createGround = (scene: Scene): GroundMesh => {
       );
       ground.material = groundMaterial;
       ground.checkCollisions = true;
-      ground.physicsImpostor = new PhysicsImpostor(
-        ground,
-        PhysicsImpostor.HeightmapImpostor,
-        { mass: 0 },
-        scene
-      );
+      //   ground.physicsImpostor = new PhysicsImpostor(
+      //     ground,
+      //     PhysicsImpostor.HeightmapImpostor,
+      //     { mass: 0 },
+      //     scene
+      //   );
     }
   );
 

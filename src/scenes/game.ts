@@ -20,6 +20,8 @@ const createGameScene = async (app: App): Promise<Scene> => {
   createGround(scene);
   createSky(scene);
 
+  scene.collisionsEnabled = true;
+
   await scene.whenReadyAsync();
   app.engine.hideLoadingUI();
 
