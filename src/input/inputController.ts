@@ -1,7 +1,12 @@
 import InputMap from "./inputMap";
 
 class InputController {
-  public inputs: InputMap;
+  public inputs: InputMap = {
+    wPressed: false,
+    aPressed: false,
+    sPressed: false,
+    dPressed: false,
+  };
 
   constructor() {
     document.addEventListener("keydown", (event) =>
@@ -13,25 +18,19 @@ class InputController {
   }
 
   private updateInputs = (event: KeyboardEvent, isPressed: boolean) => {
-    switch (event.key) {
-      case "w":
-      case "W":
-        this.inputs.wPressed = isPressed;
-        break;
-      case "a":
-      case "A":
-        this.inputs.aPressed = isPressed;
-        break;
-      case "s":
-      case "S":
-        this.inputs.sPressed = isPressed;
-        break;
-      case "d":
-      case "D":
-        this.inputs.dPressed = isPressed;
-        break;
-      default:
-        break;
+    const { key } = event;
+
+    if (key === "w" || key === "W") {
+      this.inputs.wPressed = isPressed;
+    }
+    if (key === "s" || key === "S") {
+      this.inputs.sPressed = isPressed;
+    }
+    if (key === "a" || key === "A") {
+      this.inputs.aPressed = isPressed;
+    }
+    if (key === "d" || key === "D") {
+      this.inputs.dPressed = isPressed;
     }
   };
 }

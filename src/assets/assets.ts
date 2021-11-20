@@ -13,7 +13,10 @@ type OnFinishFunc = (tasks: AbstractAssetTask[]) => void;
 class Assets {
   private assetsManager: AssetsManager;
 
-  public dude: Model;
+  public dude: Model = {
+    meshes: [],
+    skeletons: [],
+  };
 
   constructor(scene: Scene, onFinsish?: OnFinishFunc) {
     this.assetsManager = new AssetsManager(scene);
@@ -34,10 +37,8 @@ class Assets {
     };
 
     meshTask.onError = (task: MeshAssetTask, message: string) => {
-      console.error(message);
+      console.error("Error", message);
     };
-
-    console.log(this.dude);
   }
 
   public load(): void {
