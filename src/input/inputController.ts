@@ -6,6 +6,8 @@ class InputController {
     aPressed: false,
     sPressed: false,
     dPressed: false,
+    shiftPressed: false,
+    spacePressed: false,
   };
 
   constructor() {
@@ -18,7 +20,9 @@ class InputController {
   }
 
   private updateInputs = (event: KeyboardEvent, isPressed: boolean) => {
-    const { key } = event;
+    const { key, shiftKey } = event;
+
+    this.inputs.shiftPressed = shiftKey && isPressed;
 
     if (key === "w" || key === "W") {
       this.inputs.wPressed = isPressed;
@@ -31,6 +35,9 @@ class InputController {
     }
     if (key === "d" || key === "D") {
       this.inputs.dPressed = isPressed;
+    }
+    if (key == " ") {
+      this.inputs.spacePressed = isPressed;
     }
   };
 }

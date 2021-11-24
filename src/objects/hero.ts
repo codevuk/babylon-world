@@ -1,4 +1,11 @@
-import { Mesh, Scene, Skeleton, Vector3, Animatable } from "@babylonjs/core";
+import {
+  Mesh,
+  Scene,
+  Skeleton,
+  Vector3,
+  Animatable,
+  Scalar,
+} from "@babylonjs/core";
 import Ground from "../environment/ground";
 import InputMap from "../input/inputMap";
 
@@ -43,6 +50,10 @@ class Hero {
       this.walkingAnimation.pause();
     }
 
+    inputs.shiftPressed
+      ? (this.speed = Scalar.Lerp(5, 10, 0.5))
+      : (this.speed = 5);
+
     const direction = this.front;
     const normalized = direction.normalize();
     var alpha = Math.atan2(-1 * normalized.x, -1 * normalized.z);
@@ -52,14 +63,16 @@ class Hero {
       this.mesh.moveWithCollisions(
         this.front.multiplyByFloats(this.speed, this.speed, this.speed)
       );
+      this.adjustYPosition();
     }
     if (inputs.sPressed) {
       this.mesh.moveWithCollisions(
         this.front.multiplyByFloats(-this.speed, -this.speed, -this.speed)
       );
+      this.adjustYPosition();
     }
     if (inputs.dPressed) {
-      this.mesh.rotation.y += 0.1;
+      this.mesh.rotation.y += 0.05;
       this.front = new Vector3(
         -1 * Math.sin(this.mesh.rotation.y),
         0,
@@ -67,7 +80,7 @@ class Hero {
       );
     }
     if (inputs.aPressed) {
-      this.mesh.rotation.y -= 0.1;
+      this.mesh.rotation.y -= 0.05;
       this.front = new Vector3(
         -1 * Math.sin(this.mesh.rotation.y),
         0,
@@ -75,6 +88,10 @@ class Hero {
       );
     }
   }
+
+  private adjustYPosition = (): void => {
+    this.mesh.moveWithCollisions(new Vector3(0, -1, 0));
+  };
 }
 
 export default Hero;
