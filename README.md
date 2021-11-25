@@ -19,3 +19,10 @@ npm build
 ```
 npm start
 ```
+
+## Gameplay
+
+- WASD - Movement
+- Shift - Hold to move faster
+- 1 - Thrid Person View
+- 2 - First Person View

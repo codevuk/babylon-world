@@ -3,6 +3,8 @@ type InputMap = {
   aPressed: boolean;
   sPressed: boolean;
   dPressed: boolean;
+  onePressed: boolean;
+  twoPressed: boolean;
   shiftPressed: boolean;
   spacePressed: boolean;
 };
